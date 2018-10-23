@@ -1,6 +1,7 @@
 *.log
 *.zip
 *.html
+run.sh
 
 .idea/
 .vagrant/
