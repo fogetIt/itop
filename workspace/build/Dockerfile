@@ -20,12 +20,10 @@ RUN yum install -y epel-release && \
             php-pecl-zendopcache \
             php-domxml && \
     yum install -y graphviz unzip rsyslog crontabs supervisor && \
-    mkdir -p /var/lib/php/session && \
-    chown -R apache:apache /var/lib/php/session && \
     unzip iTop-2.5.0-3935.zip -d /var/www/html/ && \
     mv /var/www/html/web /var/www/html/itop && \
-    mkdir -p /var/www/html/itop/{conf,data,log,env-production} && \
-    chown -R apache:apache /var/www/html/itop && \
+    mkdir -p               /var/lib/php/session /var/www/html/itop/{conf,data,log,env-production} && \
+    chown -R apache:apache /var/lib/php/session /var/www/html/itop && \
     sed -i '/session[ ]*required[ ]*pam_loginuid.so/d' /etc/pam.d/crond && \
     sed -i 's/^\$ModLoad imjournal.*/# &/g' /etc/rsyslog.conf && \
     sed -i 's/^\$IMJournalStateFile.*/# &/g' /etc/rsyslog.conf && \

@@ -10,5 +10,5 @@ vagrant up
 
 ##### run.sh
 ```bash
-echo "*/5 * * * * apache /usr/bin/php /var/www/html/itop/webservices/cron.php --param_file=/root/cron.params >> /var/log/itop-cron.log 2>＆1" | tee -a /etc/crontab
+echo "*/5 * * * * root /usr/bin/php /var/www/html/itop/webservices/cron.php --param_file=/root/cron.params >> /var/log/itop-cron.log 2>＆1" | tee -a /etc/crontab
 ```
