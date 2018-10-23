@@ -1,0 +1,7 @@
+# copy from /var/www/html/itop/webservices/cron.distrib
+# CRON parameters file used by cron.cmd/cron.php
+#
+# Warning: make sure that this file is NOT readable by the web server
+
+auth_user=admin
+auth_pwd=admin12315

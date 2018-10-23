@@ -1,0 +1,6 @@
+*.log
+*.zip
+*.html
+
+.idea/
+.vagrant/

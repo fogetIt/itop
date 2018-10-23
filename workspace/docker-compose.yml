@@ -1,0 +1,26 @@
+version: '2'
+
+services:
+  mariadb:
+    image: mariadb:latest
+    container_name: mariadb
+    env_file: .env
+    volumes:
+      - /etc/localtime:/etc/localtime:ro
+      - ./volumes/mariadb/my.conf:/etc/mysql/my.cnf
+
+  itop:
+    container_name: itop
+    build:
+      context: build
+    image: itop:latest
+    ports:
+      - 8080:80
+      - 9001:9001
+    volumes:
+      - ./volumes/itop/run.sh:/root/run.sh
+      - ./volumes/itop/cron.params:/root/cron.params
+      - ./volumes/itop/httpd.conf:/etc/httpd/conf/httpd.conf
+      - ./volumes/itop/supervisord.conf:/root/supervisord.conf
+    # command: sleep 36000
+    command: /bin/bash /root/run.sh
