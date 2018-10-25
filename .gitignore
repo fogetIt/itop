@@ -5,3 +5,8 @@ run.sh
 
 .idea/
 .vagrant/
+workspace/volumes/itop/session/
+workspace/volumes/itop/log/
+workspace/volumes/itop/conf/
+workspace/volumes/itop/data/
+workspace/volumes/itop/env-production/
