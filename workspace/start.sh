@@ -11,4 +11,7 @@ fi
 if [[ -z $(docker images itop:latest -q) ]]; then
     docker-compose build
 fi
+# 连接宿主机数据库
+# export LOCAL_HOST=$(/sbin/ip route|awk '/default/ {print  $3}')
+# export LOCAL_HOST=$(ifconfig docker0 | egrep "inet ([0-9]{1,3}.){3}[0-9]" | awk '{print $2}')
 docker-compose up -d

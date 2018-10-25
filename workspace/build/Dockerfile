@@ -1,7 +1,8 @@
 FROM centos:centos7
 USER root
 WORKDIR /root
-RUN yum update -y && yum makecache fast
+RUN yum update -y
+# yum makecache fast
 ADD iTop-2.5.0-3935.zip /root/iTop-2.5.0-3935.zip
 # php72w need kernel 4.4.114
 RUN yum install -y epel-release && \
@@ -22,8 +23,8 @@ RUN yum install -y epel-release && \
     yum install -y graphviz unzip rsyslog crontabs supervisor && \
     unzip iTop-2.5.0-3935.zip -d /var/www/html/ && \
     mv /var/www/html/web /var/www/html/itop && \
-    mkdir -p               /var/lib/php/session /var/www/html/itop/{conf,data,log,env-production} && \
-    chown -R apache:apache /var/lib/php/session /var/www/html/itop && \
+    mkdir -p /var/lib/php/session /var/www/html/itop/{conf,data,log,env-production} && \
+    sed -i 's/^\(memory_limit =\).*/\1 256M/g' /etc/php.ini && \
     sed -i '/session[ ]*required[ ]*pam_loginuid.so/d' /etc/pam.d/crond && \
     sed -i 's/^\$ModLoad imjournal.*/# &/g' /etc/rsyslog.conf && \
     sed -i 's/^\$IMJournalStateFile.*/# &/g' /etc/rsyslog.conf && \

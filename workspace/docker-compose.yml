@@ -22,5 +22,13 @@ services:
       - ./volumes/itop/cron.params:/root/cron.params
       - ./volumes/itop/httpd.conf:/etc/httpd/conf/httpd.conf
       - ./volumes/itop/supervisord.conf:/root/supervisord.conf
+      - ./volumes/itop/session/:/var/lib/php/session/
+      - ./volumes/itop/log/:/var/www/html/itop/log/
+      - ./volumes/itop/conf/:/var/www/html/itop/conf/
+      - ./volumes/itop/data/:/var/www/html/itop/data/
+      - ./volumes/itop/env-production/:/var/www/html/itop/env-production/
     # command: sleep 36000
     command: /bin/bash /root/run.sh
+    # 连接宿主机数据库
+    # extra_hosts:
+    #   - local_host:${LOCAL_HOST}
